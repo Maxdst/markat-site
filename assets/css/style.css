@@ -381,15 +381,6 @@ section { position: relative; }
   box-shadow: var(--shadow);
 }
 .dif-photo img { display: block; width: 100%; height: 220px; object-fit: cover; }
-.dif-photo-duo {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  background: transparent;
-  box-shadow: none;
-  overflow: visible;
-}
-.dif-photo-duo img { border-radius: var(--radius); box-shadow: var(--shadow); }
 
 /* ===== Segurança ===== */
 .seguranca { padding: 100px 0; background: var(--navy); color: #fff; }

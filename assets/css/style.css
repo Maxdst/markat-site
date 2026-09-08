@@ -244,7 +244,7 @@ section { position: relative; }
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-  align-self: stretch;
+  align-self: center;
 }
 .stat-card {
   background: rgba(255,255,255,0.06);

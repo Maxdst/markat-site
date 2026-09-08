@@ -44,6 +44,40 @@ document.addEventListener('DOMContentLoaded', function () {
   }, { threshold: 0.15 });
   revealEls.forEach(function (el) { observer.observe(el); });
 
+  // Count-up animation for stat numbers (0 -> target)
+  var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function animateCount(el) {
+    var target = parseInt(el.getAttribute('data-target'), 10) || 0;
+    var suffix = el.getAttribute('data-suffix') || '';
+    if (prefersReduced) { el.textContent = target + suffix; return; }
+    var duration = 1400;
+    var startTime = null;
+    function step(now) {
+      if (startTime === null) { startTime = now; }
+      var progress = Math.min((now - startTime) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target) + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = target + suffix;
+      }
+    }
+    requestAnimationFrame(step);
+  }
+  var counters = document.querySelectorAll('[data-target]');
+  if (counters.length) {
+    var countObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animateCount(entry.target);
+          countObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    counters.forEach(function (el) { countObserver.observe(el); });
+  }
+
   // Set current year in footer
   var yearEl = document.getElementById('currentYear');
   if (yearEl) { yearEl.textContent = new Date().getFullYear(); }

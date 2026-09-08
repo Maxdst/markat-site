@@ -146,7 +146,7 @@ section { position: relative; }
   gap: 20px;
 }
 .brand { display: flex; align-items: center; gap: 10px; }
-.brand img { height: 40px; width: auto; border-radius: 6px; }
+.brand img { height: 44px; width: auto; background: #fff; border-radius: 8px; padding: 5px 8px; object-fit: contain; display: block; }
 .brand-text {
   color: #fff;
   font-weight: 800;
@@ -380,7 +380,7 @@ section { position: relative; }
   overflow: hidden;
   box-shadow: var(--shadow);
 }
-.dif-photo img { height: 220px; object-fit: cover; }
+.dif-photo img { display: block; width: 100%; height: 220px; object-fit: cover; }
 
 /* ===== Segurança ===== */
 .seguranca { padding: 100px 0; background: var(--navy); color: #fff; }
@@ -467,7 +467,7 @@ section { position: relative; }
 .cases { padding: 100px 0; background: var(--bg-light); }
 .cases-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: 220px;
   grid-auto-flow: dense;
   gap: 16px;
@@ -598,7 +598,7 @@ section { position: relative; }
   .obj-grid { grid-template-columns: 1fr; }
   .clientes-grid { grid-template-columns: repeat(4, 1fr); }
   .cases-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; }
-  .case-item.big { grid-column: span 2; grid-row: span 1; }
+  .case-item.big { grid-column: span 1; grid-row: span 1; }
 }
 
 @media (max-width: 768px) {
